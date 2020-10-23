@@ -63,12 +63,12 @@ const ListUsers = () => {
         </div>
       )}
       {page > 1 ? (
-        <button className="btn prev-btn" onClick={() => prevPage(1)}>
+        <button className="btn" onClick={() => prevPage(1)}>
           <span>&#8249;</span>
         </button>
       ) : null}
       {page < totalPages ? (
-        <button className="btn next-btn" onClick={() => nextPage(1)}>
+        <button className="btn" onClick={() => nextPage(1)}>
           <span>&#8250;</span>
         </button>
       ) : null}

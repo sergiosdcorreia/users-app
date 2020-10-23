@@ -47,3 +47,9 @@ h1 {
 button:focus {
     outline: none;
 }
+
+@media only screen and (max-width: 520px) {
+    .header {
+        flex-direction: column;
+    }
+}
