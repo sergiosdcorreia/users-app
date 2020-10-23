@@ -1,0 +1,68 @@
+.card {
+    position: relative;
+    background: rgba(80,80,80,1);
+    background: -moz-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(80,80,80,1)), color-stop(100%, rgba(55,55,55,1)));
+    background: -webkit-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+    background: -o-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+    background: -ms-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+    background: linear-gradient(to bottom, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+    box-shadow: 3px 3px 8px #222;
+    display: flex;
+    margin: 16px;
+    height: 140px;
+    width: 380px;
+}
+
+.content {
+    padding: 32px;
+    margin: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.delete {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: #eee;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.delete:focus {
+    outline: none;
+}
+
+.name {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #eee;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.email {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #eee;
+    margin: 0;
+}
+
+.image-container {
+    width: 140px;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.image {
+    width: 100%;
+}

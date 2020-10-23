@@ -1,0 +1,12 @@
+.UserCard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 60px 0;
+}
+
+.loading {
+    font-family: "Roboto", sans-serif;
+    color: #eee;
+    margin-top: 60px;
+}

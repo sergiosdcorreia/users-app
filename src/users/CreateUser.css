@@ -1,0 +1,76 @@
+.container {
+    background: rgba(80,80,80,1);
+    background: -moz-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(80,80,80,1)), color-stop(100%, rgba(55,55,55,1)));
+    background: -webkit-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+    background: -o-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+    background: -ms-linear-gradient(top, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+    background: linear-gradient(to bottom, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+    box-shadow: 3px 3px 8px #222;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 320px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+
+h2 {
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 1.5px;
+    color: #eee;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.content {
+    margin-bottom: 16px;
+}
+
+.box {
+    height: 16px;
+}
+
+label {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    color: #eee;
+    margin-bottom: 4px;
+}
+
+input {
+    height: 20px;
+}
+
+.error {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.1px;
+    color: #EDE04D;
+    text-align: left;
+}
+
+.submit {
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#768d87;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:"Roboto", sans-serif;
+	font-size:15px;
+	font-weight:bold;
+    padding:0 23px;
+    line-height: 40px;
+    letter-spacing: 1.1px;
+    height: 100%;
+	text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+    margin-top: 12px;
+}
+.submit:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#6c7c7c;
+}

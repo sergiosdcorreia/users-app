@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: ;
+    padding: 0px 32px;
+}
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: #eee;
+}
