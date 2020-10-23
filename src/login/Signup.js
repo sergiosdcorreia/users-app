@@ -23,8 +23,6 @@ const Signup = () => {
       password,
     }
 
-    console.log(userCredentials)
-
     signupUser(userCredentials)
     .then(data => {
       if(data.error) setSignup({ error: data.error })
@@ -41,7 +39,8 @@ const Signup = () => {
       const response = await fetch('https://reqres.in/api/register', {
         method: 'POST',
         headers: {
-          'Content-type': 'application/json',
+          Accept: 'application/json',
+          'Content-type': 'application/json'
         },
         body: JSON.stringify(credentials),
       })
@@ -51,12 +50,10 @@ const Signup = () => {
     }
   }
 
-  console.log(signup)
-
   const signupForm = ( email, password, error ) => {
     return (
       <form onSubmit={handleSubmit}>
-        <div className="content">
+        <div className="content margin">
           <label>Email</label>
           <input
             type="email"

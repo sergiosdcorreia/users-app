@@ -12,9 +12,9 @@ const PrivateHeader = ({ history }) => {
         <a className="create-user" href="/create-user">
             Create user
         </a>
-        <a className="logout" onClick={() => logout(() => history.push("/login"))}>
+        <button className="logout" onClick={() => logout(() => history.push("/login"))}>
             Log Out
-        </a>
+        </button>
       </div>
     </div>
   )

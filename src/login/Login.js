@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { authenticate } from "../auth/Index"
 import { Redirect } from "react-router-dom"
 import Header from "../components/Header"
@@ -47,7 +47,7 @@ const Login = () => {
         headers: {
           Accept: "application/json",
           'Content-type': 'application/json',
-          Authorization: `Bearer ${token}`
+          Authorization: `${token}`
         },
         body: JSON.stringify(credentials),
       })
@@ -60,7 +60,7 @@ const Login = () => {
   const loginForm = ( email, password, error ) => {
     return (
       <form onSubmit={handleSubmit}>
-        <div className="content">
+        <div className="content margin">
           <label>Email</label>
           <input
             type="email"

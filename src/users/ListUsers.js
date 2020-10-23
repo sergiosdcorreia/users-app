@@ -9,25 +9,38 @@ const ListUsers = () => {
   const [loading, setLoading] = useState(true)
   const [users, setUsers] = useState([])
   const [ad, setAd] = useState({})
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState()
 
   const { company, url, text } = ad
 
-  console.log(users)
   useEffect(() => {
-    loadUsers()
-  }, [])
+    loadUsers(page)
+  }, [page])
 
-  const loadUsers = async () => {
-    await fetch('https://reqres.in/api/users?page=1')
+  const loadUsers = async (page) => {
+    await fetch(`https://reqres.in/api/users?page=${page}`)
       .then((response) => response.json())
       .then((response) => setUsers(response.data))
 
-    await fetch('https://reqres.in/api/users?page=1')
+    await fetch(`https://reqres.in/api/users?page=${page}`)
       .then((response) => response.json())
       .then((response) => setAd(response.ad))
+
+    await fetch(`https://reqres.in/api/users?page=${page}`)
+      .then((response) => response.json())
+      .then((response) => setTotalPages(response.total_pages))
     
     setLoading(false)
   }
+
+  const prevPage = number => {
+    setPage( page - number );
+  };
+
+  const nextPage = number => {
+    setPage( page + number );
+  };
 
   return (
     <div>
@@ -54,6 +67,26 @@ const ListUsers = () => {
           />
         </div>
       )}
+        {
+          page > 1 ? 
+            <button
+              className="btn btn-raised btn-warning mr-5 mt-5 mb-5"
+              onClick={() => prevPage(1)}
+              >
+              Previous
+            </button> :
+          null
+        }
+        { 
+          page < totalPages ?
+            <button
+              className="btn btn-raised btn-success mt-5 mb-5"
+              onClick={() => nextPage(1)}
+              >
+              Next
+            </button> :
+          null
+        }
     </div>
   )
 }

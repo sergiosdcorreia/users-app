@@ -25,6 +25,14 @@ h2 {
 }
 
 .content {
+    padding: 0 32px;
+    margin: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.margin {
     margin-bottom: 16px;
 }
 
