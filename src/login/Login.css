@@ -92,3 +92,11 @@ input {
     margin-top: 12px;
 }
 
+@media only screen and (max-width: 420px) {
+    .container {
+        width: auto;
+        padding: 32px 16px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
