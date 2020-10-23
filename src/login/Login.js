@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-import { authenticate } from "../auth/Index"
-import { Redirect } from "react-router-dom"
-import Header from "../components/Header"
+import { authenticate } from '../auth/Index'
+import { Redirect } from 'react-router-dom'
+import Header from '../components/Header'
 
-import "./Login.css"
+import './Login.css'
 
 const Login = () => {
   const [login, setLogin] = useState({
     email: 'eve.holt@reqres.in',
     password: 'cityslicka',
     error: '',
-    redirect: false
+    redirect: false,
   })
-  
+
   const { email, password, error, redirect } = login
 
   if (redirect) {
@@ -30,24 +30,23 @@ const Login = () => {
       password,
     }
 
-    loginUser(userCredentials)
-    .then(data => {
-      if(data.error) setLogin({ error: data.error })
-      else 
+    loginUser(userCredentials).then((data) => {
+      if (data.error) setLogin({ error: data.error })
+      else
         authenticate(data, () => {
           setLogin({ redirect: true })
         })
     })
   }
 
-  const loginUser = async ( credentials, token ) => {
+  const loginUser = async (credentials, token) => {
     try {
       const response = await fetch('https://reqres.in/api/login', {
         method: 'POST',
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json',
           'Content-type': 'application/json',
-          Authorization: `${token}`
+          Authorization: `${token}`,
         },
         body: JSON.stringify(credentials),
       })
@@ -57,16 +56,12 @@ const Login = () => {
     }
   }
 
-  const loginForm = ( email, password, error ) => {
+  const loginForm = (email, password, error) => {
     return (
       <form onSubmit={handleSubmit}>
         <div className="content margin">
           <label>Email</label>
-          <input
-            type="email"
-            onChange={handleChange('email')}
-            value={email}
-          />
+          <input type="email" onChange={handleChange('email')} value={email} />
         </div>
         <div className="content">
           <label>Password</label>
@@ -77,9 +72,16 @@ const Login = () => {
           />
         </div>
         <div className="content box">
-          <div className="error" style={{display: error ? "block" : "none"}}>{error}</div>
+          <div className="error" style={{ display: error ? 'block' : 'none' }}>
+            {error}
+          </div>
         </div>
-        <p className="message">Not registered yet? Please <a className="message-link" href="/signup">Register</a></p>
+        <p className="message">
+          Not registered yet? Please{' '}
+          <a className="message-link" href="/signup">
+            Register
+          </a>
+        </p>
         <input className="submit" type="submit" value="Login" />
       </form>
     )
@@ -97,4 +99,3 @@ const Login = () => {
 }
 
 export default Login
-

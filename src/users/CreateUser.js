@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { authenticate } from '../auth/Index'
 import { Redirect } from 'react-router-dom'
-import Header from "../components/Header"
+import Header from '../components/Header'
 
 const CreateUser = () => {
   const [createUser, setCreateUser] = useState({
@@ -74,11 +74,11 @@ const CreateUser = () => {
 
   return (
     <>
-        <Header />
-        <div className="container">
+      <Header />
+      <div className="container">
         <h2>Create User</h2>
         {createUserForm(name, job, error)}
-        </div>
+      </div>
     </>
   )
 }

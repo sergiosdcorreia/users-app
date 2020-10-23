@@ -2,11 +2,28 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 60px 0;
+    margin-top: 60px;
+    margin-bottom: 32px;
 }
 
 .loading {
     font-family: "Roboto", sans-serif;
     color: #eee;
     margin-top: 60px;
+}
+
+.btn {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #5DCBB2;
+    font-size: 30px;
+    color: #eee;
+}
+
+.btn span {
+    position: absolute;
+    top: 4%;
+    left: 36%;
 }

@@ -3,7 +3,6 @@ import { Route, Redirect } from 'react-router-dom'
 import { isAuthenticated } from './Index'
 
 const PrivateRoutes = ({ component: Component, ...rest }) => (
-
   <Route
     {...rest}
     render={(props) =>

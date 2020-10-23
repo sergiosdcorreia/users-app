@@ -76,8 +76,7 @@ input {
 }
 
 .submit {
-	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-	background-color:#768d87;
+	background-color:#2A93FF;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -88,13 +87,10 @@ input {
     line-height: 40px;
     letter-spacing: 1.1px;
     height: 100%;
-	text-decoration:none;
-    text-shadow:0px -1px 0px #2b665e;
+    text-decoration:none;
+    border-radius: 20px;
+    box-shadow:0px 0px 5px #2A93FF;
     margin-top: 12px;
-}
-.submit:hover {
-	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
-	background-color:#6c7c7c;
 }
 
 

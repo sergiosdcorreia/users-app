@@ -18,6 +18,6 @@ export const authenticate = (token, callback) => {
 }
 
 export const logout = (next) => {
-    if (typeof window !== 'undefined') localStorage.removeItem('token')
-    next()
-  }
+  if (typeof window !== 'undefined') localStorage.removeItem('token')
+  next()
+}

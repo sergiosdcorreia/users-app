@@ -1,6 +1,6 @@
 import React from 'react'
-import { withRouter } from "react-router-dom"
-import { logout } from "../auth/Index"
+import { withRouter } from 'react-router-dom'
+import { logout } from '../auth/Index'
 
 import './PrivateHeader.css'
 
@@ -10,10 +10,13 @@ const PrivateHeader = ({ history }) => {
       <h1>Users App</h1>
       <div>
         <a className="create-user" href="/create-user">
-            Create user
+          Create user
         </a>
-        <button className="logout" onClick={() => logout(() => history.push("/login"))}>
-            Log Out
+        <button
+          className="logout"
+          onClick={() => logout(() => history.push('/login'))}
+        >
+          Log Out
         </button>
       </div>
     </div>

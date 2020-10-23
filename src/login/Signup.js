@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Header from "../components/Header"
+import Header from '../components/Header'
 
-import "./Signup.css"
+import './Signup.css'
 
 const Signup = () => {
   const [signup, setSignup] = useState({
@@ -23,24 +23,24 @@ const Signup = () => {
       password,
     }
 
-    signupUser(userCredentials)
-    .then(data => {
-      if(data.error) setSignup({ error: data.error })
-      else setSignup({
-        email: "",
-        password: "",
-        error: ""
-      })
+    signupUser(userCredentials).then((data) => {
+      if (data.error) setSignup({ error: data.error })
+      else
+        setSignup({
+          email: '',
+          password: '',
+          error: '',
+        })
     })
   }
 
-  const signupUser = async credentials => {
+  const signupUser = async (credentials) => {
     try {
       const response = await fetch('https://reqres.in/api/register', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
         },
         body: JSON.stringify(credentials),
       })
@@ -50,16 +50,12 @@ const Signup = () => {
     }
   }
 
-  const signupForm = ( email, password, error ) => {
+  const signupForm = (email, password, error) => {
     return (
       <form onSubmit={handleSubmit}>
         <div className="content margin">
           <label>Email</label>
-          <input
-            type="email"
-            onChange={handleChange('email')}
-            value={email}
-          />
+          <input type="email" onChange={handleChange('email')} value={email} />
         </div>
         <div className="content">
           <label>Password</label>
@@ -70,9 +66,16 @@ const Signup = () => {
           />
         </div>
         <div className="content box">
-          <div className="error" style={{display: error ? "block" : "none"}}>{error}</div>
+          <div className="error" style={{ display: error ? 'block' : 'none' }}>
+            {error}
+          </div>
         </div>
-        <p className="message">Already Signup? Please <a className="message-link" href="./">Login</a></p>
+        <p className="message">
+          Already Signup? Please{' '}
+          <a className="message-link" href="./">
+            Login
+          </a>
+        </p>
         <input className="submit" type="submit" value="Register" />
       </form>
     )

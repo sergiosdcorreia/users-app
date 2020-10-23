@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import UserCard from './UserCard'
-import AdCard from "./AdCard"
-import PrivateHeader from "../components/PrivateHeader"
+import AdCard from './AdCard'
+import PrivateHeader from '../components/PrivateHeader'
 
-import "./ListUsers.css"
+import './ListUsers.css'
 
 const ListUsers = () => {
   const [loading, setLoading] = useState(true)
@@ -30,23 +30,22 @@ const ListUsers = () => {
     await fetch(`https://reqres.in/api/users?page=${page}`)
       .then((response) => response.json())
       .then((response) => setTotalPages(response.total_pages))
-    
+
     setLoading(false)
   }
 
-  const prevPage = number => {
-    setPage( page - number );
-  };
+  const prevPage = (number) => {
+    setPage(page - number)
+  }
 
-  const nextPage = number => {
-    setPage( page + number );
-  };
+  const nextPage = (number) => {
+    setPage(page + number)
+  }
 
   return (
     <div>
       <PrivateHeader />
-      {
-      loading ? (
+      {loading ? (
         <div className="loading">Loading...</div>
       ) : (
         <div className="UserCard">
@@ -60,33 +59,19 @@ const ListUsers = () => {
               avatar={user.avatar}
             />
           ))}
-          <AdCard
-            company={company}
-            url={url}
-            text={text}
-          />
+          <AdCard company={company} url={url} text={text} />
         </div>
       )}
-        {
-          page > 1 ? 
-            <button
-              className="btn btn-raised btn-warning mr-5 mt-5 mb-5"
-              onClick={() => prevPage(1)}
-              >
-              Previous
-            </button> :
-          null
-        }
-        { 
-          page < totalPages ?
-            <button
-              className="btn btn-raised btn-success mt-5 mb-5"
-              onClick={() => nextPage(1)}
-              >
-              Next
-            </button> :
-          null
-        }
+      {page > 1 ? (
+        <button className="btn prev-btn" onClick={() => prevPage(1)}>
+          <span>&#8249;</span>
+        </button>
+      ) : null}
+      {page < totalPages ? (
+        <button className="btn next-btn" onClick={() => nextPage(1)}>
+          <span>&#8250;</span>
+        </button>
+      ) : null}
     </div>
   )
 }
