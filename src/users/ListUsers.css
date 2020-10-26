@@ -29,6 +29,10 @@
 
 .btn span {
     position: absolute;
-    top: 4%;
-    left: 36%;
+    top: 7%;
+    left: 38%;
+}
+
+.btn:focus {
+    outline: none;
 }

@@ -94,6 +94,10 @@ input {
     margin-top: 12px;
 }
 
+.submit:focus {
+    outline: none;
+}
+
 @media only screen and (max-width: 420px) {
     .container {
         width: auto;

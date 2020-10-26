@@ -89,8 +89,11 @@ input {
     text-decoration:none;
     border: none;
     border-radius: 20px;
-    box-shadow:0px 0px 5px #2A93FF;
     margin-top: 12px;
+}
+
+.submit:focus {
+    outline: none;
 }
 
 @media only screen and (max-width: 420px) {
