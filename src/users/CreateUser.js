@@ -5,8 +5,8 @@ import Header from '../components/Header'
 
 const CreateUser = () => {
   const [createUser, setCreateUser] = useState({
-    name: '',
-    job: '',
+    name: 'morpheus',
+    job: 'leader',
     error: '',
   })
 

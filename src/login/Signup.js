@@ -18,12 +18,8 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const userCredentials = {
-      email,
-      password,
-    }
 
-    signupUser(userCredentials).then((data) => {
+    signupUser().then((data) => {
       if (data.error) setSignup({ error: data.error })
       else
         setSignup({
@@ -34,15 +30,18 @@ const Signup = () => {
     })
   }
 
-  const signupUser = async (credentials) => {
+  const signupUser = async () => {
     try {
       const response = await fetch('https://reqres.in/api/register', {
         method: 'POST',
         headers: {
-          Accept: 'application/json',
-          'Content-type': 'application/json',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(credentials),
+        body: JSON.stringify({
+          email: email,
+          password: password
+        }),
       })
       return response.json()
     } catch (err) {

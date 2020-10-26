@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: ;
     padding: 0px 32px;
 }
 
@@ -24,8 +23,8 @@ h1 {
     padding: 0 16px;
     margin-left: 16px;
     cursor: pointer;
+    border: none;
     border-radius: 20px;
-    box-shadow: 0 0 8px #FF9159;
 }
 
 .create-user {
@@ -40,8 +39,8 @@ h1 {
     margin-left: 16px;
     text-decoration: none;
     cursor: pointer;
+    border: none;
     border-radius: 20px;
-    box-shadow: 0 0 8px #58DD4B;
 }
 
 button:focus {
