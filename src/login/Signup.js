@@ -4,33 +4,29 @@ import Header from '../components/Header'
 import './Signup.css'
 
 const Signup = () => {
-  const [signup, setSignup] = useState({
-    email: 'eve.holt@reqres.in',
-    password: 'pistol',
-    error: '',
-  })
 
-  const { email, password, error } = signup
-
-  const handleChange = (credentials) => (event) => {
-    setSignup({ [credentials]: event.target.value })
-  }
+  const [email, setEmail] = useState('eve.holt@reqres.in')
+  const [password, setPassword] = useState('pistol')
+  const [error, setError] = useState([])
+  const [message, setMessage] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const userCredentials = {
+      email,
+      password
+    }
 
-    signupUser().then((data) => {
-      if (data.error) setSignup({ error: data.error })
+    signupUser(userCredentials).then((data) => {
+      if (data.error) setError([ data.error ])
       else
-        setSignup({
-          email: '',
-          password: '',
-          error: '',
-        })
+        setEmail('')
+        setPassword('')
+        setMessage("Successfully registered! ")
     })
   }
 
-  const signupUser = async () => {
+  const signupUser = async (credentials) => {
     try {
       const response = await fetch('https://reqres.in/api/register', {
         method: 'POST',
@@ -38,10 +34,7 @@ const Signup = () => {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email: email,
-          password: password
-        }),
+        body: JSON.stringify(credentials),
       })
       return response.json()
     } catch (err) {
@@ -54,13 +47,13 @@ const Signup = () => {
       <form onSubmit={handleSubmit}>
         <div className="content margin">
           <label>Email</label>
-          <input type="email" onChange={handleChange('email')} value={email} />
+          <input type="email" onChange={e => setEmail(e.target.value)} value={email} />
         </div>
         <div className="content">
           <label>Password</label>
           <input
             type="password"
-            onChange={handleChange('password')}
+            onChange={e => setPassword(e.target.value)}
             value={password}
           />
         </div>
@@ -70,7 +63,8 @@ const Signup = () => {
           </div>
         </div>
         <p className="message">
-          Already Signup? Please{' '}
+          { message ? message : 'Already Signup? ' } 
+          Please{' '}
           <a className="message-link" href="./">
             Login
           </a>

@@ -6,21 +6,15 @@ import Header from '../components/Header'
 import './Login.css'
 
 const Login = () => {
-  const [login, setLogin] = useState({
-    email: 'eve.holt@reqres.in',
-    password: 'cityslicka',
-    error: '',
-    redirect: false,
-  })
 
-  const { email, password, error, redirect } = login
+  const [email, setEmail] = useState('eve.holt@reqres.in')
+  const [password, setPassword] = useState('cityslicka')
+  const [error, setError] = useState([])
+  const [redirect, setRedirect] = useState(false)
+
 
   if (redirect) {
     return <Redirect to="/users" />
-  }
-
-  const handleChange = (credentials) => (event) => {
-    setLogin({ [credentials]: event.target.value })
   }
 
   const handleSubmit = (e) => {
@@ -31,10 +25,10 @@ const Login = () => {
     }
 
     loginUser(userCredentials).then((data) => {
-      if (data.error) setLogin({ error: data.error })
+      if (data.error) setError([ data.error ])
       else
         authenticate(data, () => {
-          setLogin({ redirect: true })
+          setRedirect({ redirect: true })
         })
     })
   }
@@ -61,13 +55,13 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <div className="content margin">
           <label>Email</label>
-          <input type="email" onChange={handleChange('email')} value={email} />
+          <input type="email" onChange={e => setEmail(e.target.value)} value={email} />
         </div>
         <div className="content">
           <label>Password</label>
           <input
             type="password"
-            onChange={handleChange('password')}
+            onChange={e => setPassword(e.target.value)}
             value={password}
           />
         </div>

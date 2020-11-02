@@ -6,12 +6,8 @@ import './UserCard.css'
 const UserCard = ({ userId, firstName, lastName, email, avatar }) => {
   const removeUser = () => {
     const token = isAuthenticated().token
-    deleteUser(userId, token).then((data) => {
-      if (data.error) {
-        console.log(data.error)
-      } else {
-        console.log('User deleted')
-      }
+    deleteUser(userId, token).then(() => {
+      console.log('User deleted')
     })
   }
 
@@ -32,7 +28,7 @@ const UserCard = ({ userId, firstName, lastName, email, avatar }) => {
         },
       })
       console.log(response)
-      return response.json()
+      return response.end()
     } catch (err) {
       return console.log(err)
     }
