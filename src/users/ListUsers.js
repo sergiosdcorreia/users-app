@@ -11,6 +11,7 @@ const ListUsers = () => {
   const [ad, setAd] = useState({})
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState()
+  const [currentPage, setCurrentPage] = useState()
 
   const { company, url, text } = ad
 
@@ -30,6 +31,10 @@ const ListUsers = () => {
     await fetch(`https://reqres.in/api/users?page=${page}`)
       .then((response) => response.json())
       .then((response) => setTotalPages(response.total_pages))
+
+    await fetch(`https://reqres.in/api/users?page=${page}`)
+      .then((response) => response.json())
+      .then((response) => setCurrentPage(response.page))
 
     setLoading(false)
   }
@@ -62,16 +67,23 @@ const ListUsers = () => {
           <AdCard company={company} url={url} text={text} />
         </div>
       )}
-      {page > 1 ? (
-        <button className="btn" onClick={() => prevPage(1)}>
-          <span>&#8249;</span>
-        </button>
-      ) : null}
-      {page < totalPages ? (
-        <button className="btn" onClick={() => nextPage(1)}>
-          <span>&#8250;</span>
-        </button>
-      ) : null}
+      <div className="pagination">
+        {page > 1 ? (
+          <button className="btn" onClick={() => prevPage(1)}>
+            <span>&#8249;</span>
+          </button>
+        ) : <div className="btn-container"></div>}
+
+        <div className="current-page">
+          <span>Page {currentPage}</span>
+        </div>
+
+        {page < totalPages ? (
+          <button className="btn" onClick={() => nextPage(1)}>
+            <span>&#8250;</span>
+          </button>
+        ) : <div className="btn-container"></div>}
+      </div>
     </div>
   )
 }
