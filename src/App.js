@@ -1,12 +1,27 @@
-import React from 'react'
+/** @jsx jsx */
 import { BrowserRouter } from "react-router-dom"
 import MainRouter from "./MainRouter"
-import './App.css'
+import { css, jsx, Global } from '@emotion/core'
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <Global
+        styles={{
+          body: {
+            margin: 0,
+            padding: 0
+          }
+        }}
+      />
+      <div 
+        css={css`
+          height: 100%;
+          text-align: center;
+          max-width: 1240px;
+          margin: 0 auto;
+        `}
+      >
         <MainRouter />    
       </div>
     </BrowserRouter>
