@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import Header from '../components/Header'
 
-import './Signup.css'
-
 const Signup = () => {
 
   const [email, setEmail] = useState('eve.holt@reqres.in')
