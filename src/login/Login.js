@@ -77,7 +77,7 @@ const Login = () => {
               height: 20px;
             `}
             type="email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             value={email}
           />
         </div>
@@ -106,7 +106,7 @@ const Login = () => {
               height: 20px;
             `}
             type="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             value={password}
           />
         </div>
