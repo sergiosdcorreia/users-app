@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import UserCard from './UserCard'
 import AdCard from './AdCard'
+import Pagination from './Pagination'
 import PrivateHeader from '../components/PrivateHeader'
 
 import './ListUsers.css'
@@ -8,12 +9,12 @@ import './ListUsers.css'
 const ListUsers = () => {
   const [loading, setLoading] = useState(true)
   const [users, setUsers] = useState([])
-  const [ad, setAd] = useState({})
+  const [support, setSupport] = useState({})
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState()
   const [currentPage, setCurrentPage] = useState()
 
-  const { company, url, text } = ad
+  const { url, text } = support
 
   useEffect(() => {
     loadUsers(page)
@@ -26,7 +27,7 @@ const ListUsers = () => {
 
     await fetch(`https://reqres.in/api/users?page=${page}`)
       .then((response) => response.json())
-      .then((response) => setAd(response.ad))
+      .then((response) => setSupport(response.support))
 
     await fetch(`https://reqres.in/api/users?page=${page}`)
       .then((response) => response.json())
@@ -48,43 +49,35 @@ const ListUsers = () => {
   }
 
   return (
-    <div>
+    <>
       <PrivateHeader />
       {loading ? (
         <div className="loading">Loading...</div>
       ) : (
-        <div className="UserCard">
-          {users.map((user, i) => (
-            <UserCard
-              key={user.id}
-              userId={user.id}
-              firstName={user.first_name}
-              lastName={user.last_name}
-              email={user.email}
-              avatar={user.avatar}
-            />
-          ))}
-          <AdCard company={company} url={url} text={text} />
-        </div>
+        <>
+          <div className="UserCard">
+            {users.map((user, i) => (
+              <UserCard
+                key={user.id}
+                userId={user.id}
+                firstName={user.first_name}
+                lastName={user.last_name}
+                email={user.email}
+                avatar={user.avatar}
+              />
+            ))}
+          </div>
+          <AdCard url={url} text={text} />
+          <Pagination
+            page={page}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            prevPage={() => prevPage(1)}
+            nextPage={() => nextPage(1)}
+          />
+        </>
       )}
-      <div className="pagination">
-        {page > 1 ? (
-          <button className="btn" onClick={() => prevPage(1)}>
-            <span>&#8249;</span>
-          </button>
-        ) : <div className="btn-container"></div>}
-
-        <div className="current-page">
-          <span>Page {currentPage}</span>
-        </div>
-
-        {page < totalPages ? (
-          <button className="btn" onClick={() => nextPage(1)}>
-            <span>&#8250;</span>
-          </button>
-        ) : <div className="btn-container"></div>}
-      </div>
-    </div>
+    </>
   )
 }
 

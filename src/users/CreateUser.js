@@ -3,6 +3,8 @@ import { authenticate } from '../auth/Index'
 import { Redirect } from 'react-router-dom'
 import Header from '../components/Header'
 
+import './CreateUser.css'
+
 const CreateUser = () => {
   const [createUser, setCreateUser] = useState({
     name: 'morpheus',
